@@ -1,7 +1,7 @@
 # in a workflow. The resource template type accepts any k8s manifest
 # (including CRDs) and can perform any `kubectl` action against it (e.g. create,
 # apply, delete, patch).
-apiVersion: argoproj.io/v1alpha1
+apiVersion: applications.argoproj.io
 kind: Workflow
 metadata:
   generateName: k8s-jobs-
