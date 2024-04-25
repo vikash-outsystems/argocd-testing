@@ -1,21 +1,12 @@
-# tetris-deployment.yaml
-
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
 metadata:
   name: tetris-deployment
 spec:
-  replicas: 3 # You can adjust the number of replicas as needed
-  selector:
-    matchLabels:
-      app: tetris
-  template:
-    metadata:
-      labels:
-        app: tetris
-    spec:
-      containers:
-        - name: tetris
-          image: nasi101/tetrisv2 # Replace with the actual image tag
-          ports:
-            - containerPort: 80 # Replace with the port your Tetris game listens on
+  entrypoint: deploy-tetris
+  templates:
+    - name: deploy-tetris
+      container:
+        image: nasi101/tetrisv2 # Replace with the actual image tag
+        command: ["/bin/sh", "-c"]
+        args: ["echo 'Deploying Tetris game...' && sleep 5 && echo 'Tetris game deployed!'"]
