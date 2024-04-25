@@ -8,5 +8,5 @@ spec:
     - name: deploy-tetris
       container:
         image: nasi101/tetrisv2 # Replace with the actual image tag
-        command: ["/bin/sh", "-c"]
-        args: ["echo 'Deploying Tetris game...' && echo 'Tetris game deployed!'"]
+        ports:
+          - containerPort: 80 # Replace with the port your Tetris game listens on
