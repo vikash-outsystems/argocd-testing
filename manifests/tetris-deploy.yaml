@@ -9,4 +9,4 @@ spec:
       container:
         image: nasi101/tetrisv2 # Replace with the actual image tag
         command: ["/bin/sh", "-c"]
-        args: ["echo 'Deploying Tetris game...' && sleep 5 && echo 'Tetris game deployed!'"]
+        args: ["echo 'Deploying Tetris game...' && echo 'Tetris game deployed!'"]
