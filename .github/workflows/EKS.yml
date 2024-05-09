@@ -1,12 +1,10 @@
 name: "EKS Deployment"
 
 on:
-   workflow_dispatch:
-
-#on:
-  #push:
-     #branches: [ "main" ]
-  #pull_request:
+  push:
+    branches:
+      - terraform-eks-deploy
+  workflow_dispatch:
 
 permissions:
   contents: read
