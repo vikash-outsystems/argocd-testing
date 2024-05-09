@@ -13,7 +13,6 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: dev
 
     defaults:
       run:
@@ -21,7 +20,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configure AWS credentails
       uses: aws-actions/configure-aws-credentials@v3
@@ -31,7 +30,7 @@ jobs:
         aws-region: ap-south-1
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Init 
       working-directory: cluster/
@@ -43,8 +42,8 @@ jobs:
 
     - name: Terraform Plan
       working-directory: cluster/
-      run: terraform plan -var="k8sVersion=1.27"
+      run: terraform plan 
 
     - name: Terraform Apply
       working-directory: cluster/  
-      run: terraform apply -var="k8sVersion=1.27" -auto-approve
+      run: terraform apply --auto-approve
